@@ -1,0 +1,301 @@
+/* Reset CSS / Normalizador */
+*{
+    margin:0;
+    padding: 0;
+    border: 0;
+    box-sizing:border-box;
+}
+li{
+    list-style: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+a{
+    cursor: pointer;
+}
+p a {
+    display: inline;  
+}
+img , svg{
+    display: block;
+    width: 100%;
+    height: initial;
+}
+h1 , h2 , h3 , h4 , h5 , h6 , p , strong , em , mark , a{
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    color:inherit;
+    text-decoration: none;
+    background-color: inherit;
+}
+form , input , textarea , select , label, button {
+	display: block ;
+	font-family: inherit;
+	font-size: inherit;
+	background-color: transparent;
+	appearance:none;
+    cursor: pointer;
+}
+/* Tipografia Para titulos  */
+@font-face {
+    font-family: 'Abril Fatface';
+    src: url('../fonts/AbrilFatface-Regular.ttf') format('truetype');
+}
+/* Tipografia para cuerpo de texto */
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway/Raleway-VariableFont_wght.ttf') format('truetype');
+}
+/* 
+input:focus{
+	cambiar el color del tabulador desde el reset con:
+	outline-color: green;
+}*/
+/* 
+[type="checkbox"]{
+	cambiar el color del fondo del checkbox (solo en algunos navegadores mas modernos) desde el reset con:
+	accent-color: purple;
+}*/
+
+:root{
+    /* Colores */
+    --color-bg-main: #F8F3E6;
+    --color-bg-alt: #FDEDEC;
+    --color-text-main: #000000;
+    --color-text-secondary: #333333;
+    --color-accent-pink: #C48693;
+    --color-accent-rose-gold: #B5838D;
+    --color-accent-cream: #FFFDD0;
+    --color-accent-sage: #A8D5BA;
+    --color-bg-secondary: #E0E0E0;
+    --color-bg-warm: #F7F7F7;
+    --color-alert-red: #DC3545;
+    --color-alert-yellow: #FFC107;
+  
+  
+    /* Titulos-h2 */
+    --font-family-titulos: 'Abril Fatface';
+    --font-size--titulos-h2: 2em;
+    --font-weight--titulo-h2: 400;
+    
+    /* Titulos-h3 */
+    --font-family-titulos-h3: 'Abril Fatface';
+    --font-size--titulos-h3: 1.5em;
+    --font-weight--titulo-h3: 300;
+    
+    /* Tipografia-Cuerpo  */
+    --font-family-cuerpo: 'Raleway';
+    --font-size-cuerpo: 1em;
+    --letter-spacing: .0938rem;
+}
+body{
+    /* Ver qué propiedades se REPITEN a lo largo de la web
+    - Tipografía base / principal
+    - Tamaño fuente
+    */
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    font-family: var(--font-family-cuerpo);
+    font-size: var(--font-size-cuerpo);
+    letter-spacing: var(--letter-spacing);
+  
+}
+
+.Header {
+    width: 100%;
+    background-color: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-bg-secondary);
+
+    padding: 1.25rem;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+}
+.Header-h1{
+    font-family: var(--font-family-titulos);
+    font-size: 2.5em;
+    color: var(--color-accent-pink);
+}
+
+
+.Header-ul {
+    width: 100%;
+    min-height: auto;
+    padding: .5rem;
+    background-color: var(--color-accent-pink);
+    border-radius: 5%;
+  
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+@media(max-width:1100px){
+    .Header-ul{
+        min-height: 17rem;
+        flex-direction: column;
+        align-items:start;
+        position: absolute;
+        top: 6rem;
+        left: 0;
+
+        opacity: 0;
+        pointer-events: none;
+       
+        
+        transform: translateY(-100%);
+        transition: transform .3s ease-in-out , opacity .1s ease-in-out;
+    }
+    .Header-ul.isActive{
+        transform: translateY(0%);
+        opacity: 1;
+        pointer-events: auto;
+        }
+
+}
+
+.Header-li {
+    margin: 0 1.25rem;
+    padding: 15px;  
+    height: 100%;
+    font-weight: 500;
+}
+
+.Header-li--change {
+    position: relative;
+}
+
+.Header-ul--secondary {
+    display: block;
+    max-width: 10rem;
+    min-height: 100px;
+    padding: 10px;
+    background-color: black;
+    color: var(--color-bg-main);
+    flex-direction: column;
+    align-items: start;
+    position: absolute;
+    top: 100%; 
+    left: 0; 
+    z-index: 1; 
+}
+
+/* Mostrar el submenú cuando el contenedor tiene la clase 'active' */
+.Header-li--change.active .Header-ul--secondary {
+    display: block;
+}
+
+
+          
+         
+
+
+
+
+.Header-a {
+    color: var(--color-text-main);
+    
+    
+}
+.Header-boton{
+    width: 2rem;
+    height: 2rem;
+    
+    position :absolute;
+    top: 1.6rem;
+    right: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .65rem;  
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media(max-width:1100px){
+    .Header-boton{
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+.Header-div{
+    background: var(--color-accent-rose-gold);
+    height: 2px;
+    width: 100%;
+    border-radius:5px ;
+    transition: transform .5s ease, background-color .3s ease;
+    transform-origin: left;
+}
+.Header-boton:hover div:first-child {
+    transform: rotate(45deg);
+    background-color: var(--color-accent-sage);
+}
+
+.Header-boton:hover div:nth-child(2) {
+    opacity: 0;
+}
+.Header-boton:hover div:last-child {
+    transform: rotate(-45deg);
+    background-color: var(--color-accent-sage);
+
+}
+
+
+
+
+.Section {
+    width: 100%;
+    height: 100vh;
+    
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center; 
+    position: relative;
+    overflow: hidden;
+}
+
+.Section-parallax{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/chess.png); 
+    opacity: .6;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center; 
+    z-index: -1
+}
+
+.Section-h2 .Section-p {
+    z-index: -1;
+}
+
+.Content-section{
+    padding: 50px 20px;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.Footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
